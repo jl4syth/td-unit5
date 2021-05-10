@@ -13,10 +13,10 @@ const ans5 = prompt("What language do you use to add interactivity to a web page
 
 let score = 0;
 let correctAnswer = 1;
-let message;
+let rank;
 
 // 3. Select the <main> HTML element
-
+const main = document.querySelector('main');
 
 /*
   4. Ask at least 5 questions
@@ -27,33 +27,23 @@ let message;
 
 if (ans1.toUpperCase() === 'RUBY') {
   score += correctAnswer;
-} else {
-  
 }
 
 if (ans2.toUpperCase() === 'PYTHON') {
   score += correctAnswer;
-} else {
-
-}
+} 
 
 if (ans3.toUpperCase() === 'CSS') {
   score += correctAnswer;
-} else {
-
-}
+} 
 
 if (ans4.toUpperCase() === 'HTML') {
   score += correctAnswer;
-} else {
-
-}
+} 
 
 if (ans5.toUpperCase() === 'JAVASCRIPT') {
   score += correctAnswer;
-} else {
-
-}
+} 
 
 
 /*
@@ -65,23 +55,21 @@ if (ans5.toUpperCase() === 'JAVASCRIPT') {
 */
 
 if ( score === 5 ) {
-  message = `<h2>You got ${score} out of 5 questions correct.</h2>
-  <p>Crown earned: Gold </p>`;
-} else if ( score === 3 || score === 4 ) {
-  message = `<h2>You got ${score} out of 5 questions correct.</h2>
-  <p>Crown earned: Silver</p>`;
-} else if ( score === 1 || score === 2 ) {
-  message = `<h2>You got ${score} out of 5 questions correct.</h2>
-  <p>Crown earned: Bronze</p>`;
+  rank = "Gold"; 
+} else if ( score >= 3 ) {
+  rank = "Silver";
+} else if ( score >= 2 ) {
+  rank = "Bronze";
 } else {
-  message = `<h2>You got ${score} out of 5 questions correct.</h2>
-  <p>Crown earned: No Crown</p>`;
+  rank = "No Crown";
 }
 
 
 // 6. Output results to the <main> element
+main.innerHTML =
+  `<h2>You got ${score} out of 5 questions correct.</h2>
+  <p>Crown earned: ${rank} </p>`;
 
-document.querySelector('main').innerHTML = message;
 
 
 console.log(score);
